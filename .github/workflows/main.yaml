@@ -42,7 +42,7 @@ jobs:
         run: |
           echo "PORT: ${{env.PORT}}"
           echo "PassWord: ${{ env.PassWord }}"
-          echp "shole: ${{env.shole}}"
+          echo "shole: ${{env.shole}}"
   run_project:
     needs: test_project
     runs-on: ubuntu-latest
@@ -65,7 +65,7 @@ jobs:
       - name: print env
         run: |
           echo "PORT: ${{env.PORT}}"
-          echp "shole: ${{env.shole}}"
+          echo "shole: ${{env.shole}}"
 
   show_report:
     needs: test_project
