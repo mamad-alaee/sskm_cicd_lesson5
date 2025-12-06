@@ -9,7 +9,9 @@ env:
   PORT: ${{secrets.PORT}}
 jobs:
   test_project:
+    environment: testing_stage
     env:
+      shole: ${{secrets.SHOLE}}
       PassWord: ${{secrets.PASSWORD}}
     runs-on: ubuntu-latest
     steps:
@@ -40,9 +42,13 @@ jobs:
         run: |
           echo "PORT: ${{env.PORT}}"
           echo "PassWord: ${{ env.PassWord }}"
+          echp "shole: ${{env.shole}}"
   run_project:
     needs: test_project
     runs-on: ubuntu-latest
+    environment: deployment_stage
+    env:
+      shole: ${{secrets.SHOLE}}
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python 3.9
@@ -59,6 +65,7 @@ jobs:
       - name: print env
         run: |
           echo "PORT: ${{env.PORT}}"
+          echp "shole: ${{env.shole}}"
 
   show_report:
     needs: test_project
