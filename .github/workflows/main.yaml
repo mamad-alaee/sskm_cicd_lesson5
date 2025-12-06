@@ -6,11 +6,11 @@ on:
     branches: [main]
 
 env:
-  PORT: 4003
+  PORT: ${{secrets.PORT}}
 jobs:
   test_project:
     env:
-      PassWord: sskm_lolo_pro
+      PassWord: ${{secrets.PASSWORD}}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
